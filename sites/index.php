@@ -6,4 +6,6 @@
  * Time: 14:20
  */
 
-echo 'this php file';
+
+header('Location: http://avtosushi.ru');
+exit;
