@@ -1,0 +1,31 @@
+version: '2'
+services:
+  data:
+    image: busybox:latest
+    volumes:
+      - ~/.ssh:/root/.ssh
+      - ./sites:/app
+    entrypoint: tail -f /dev/null
+
+  app:
+    build: docker/php
+    working_dir: /app
+    volumes_from:
+      - data
+    expose:
+      - 9000
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "81:81"
+    volumes:
+      - ./sites:/app
+      - ./docker/nginx/vhost.conf:/etc/nginx/conf.d/vhost.conf
+    links:
+      - app
+  cron:
+    build: ./docker/cron
+    volumes_from:
+      - data
+
