@@ -3,6 +3,6 @@
 while [ true ]
 do
 #    date
-  find /app -type d -maxdepth 1 -exec  git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \; > /tmp/cron.log &
-  sleep 600
+   /app/update_git.sh  > /tmp/cron.log &
+  sleep 60
 done
