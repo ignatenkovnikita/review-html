@@ -7,5 +7,5 @@
  */
 
 
-header('Location: http://avtosushi.ru');
+header('Location: http://ya.ru');
 exit;
